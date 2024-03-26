@@ -1,9 +1,7 @@
+import * as Print from 'expo-print';
 import React, { useState } from 'react'
 import {View, Text, Button, Image, StyleSheet} from 'react-native'
-import * as Print from 'expo-print';
 import { shareAsync } from 'expo-sharing';
-import { IconButton } from "@react-native-material/core";
-import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const html = `
 <html>

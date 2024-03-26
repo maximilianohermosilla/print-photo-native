@@ -75,8 +75,6 @@ export default function ImagePickerPage() {
     }
 
     const print = async () => {
-        //await setHTML();
-        // On iOS/android prints the given html. On web prints the HTML from the current page.
         setTimeout(async () => {
             //console.log(html);
             await Print.printAsync({
@@ -88,7 +86,13 @@ export default function ImagePickerPage() {
 
     const printToFile = async () => {
         // On iOS/android prints the given html. On web prints the HTML from the current page.
-        const { uri } = await Print.printToFileAsync({ html });
+        const { uri } = await Print.printToFileAsync({ html ,
+            margins: {
+              left: 0,
+              top: 0,
+              right: 0,
+              bottom: 0,
+            },});
         console.log('File has been saved to:', uri);
         setTimeout(async () => {
             console.log(html);
@@ -105,36 +109,59 @@ export default function ImagePickerPage() {
         let htmlSetted = `
         <html>
         <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;600&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
         </head>
-        <body style="text-align: center;">
-            <h1 style="font-size: 50px; font-family: Helvetica Neue; font-weight: normal;">
+        <style>
+        @page {
+            margin: 0px;
+        }
+        </style>
+        <body style="text-align: center; background: url(http://www.designals.net/wp-content/uploads/2011/09/PaperTexture-21.jpg);
+            background-size: cover;">
+            <h1 style="font-size: 72px; font-family: 'Inter', sans-serif;
+            font-family: 'UnifrakturMaguntia', cursive; border-bottom: 3px solid black; padding: 1rem;">
                 Benidorm
             </h1>
-            <div style="display: grid; grid-template-columns: 1fr 1fr;">
-                <img src="${image64}" style="width: 100%; height: 100%; object-fit: contain" />
-                <p style="padding: 1rem; text-align: start;">
-                    Benidorm es un balneario costero en la costa este de España, parte de la famosa Costa Blanca de la región de Valencia. 
-                    Fue una pequeña villa pesquera hasta la década de 1960 y actualmente es un popular destino vacacional mediterráneo famoso por su vida nocturna. 
-                    Sus dos amplias playas de arena, la playa de Levante y la playa Poniente, están bordeadas de paseos costeros con palmeras, bares y filas de rascacielos.
+            <div style="display: grid; grid-template-columns: 1fr 1fr; padding: 1rem;">
+                <img src="${image64}"
+                    style="width: 100%; object-fit: cover; object-position: top; max-height: 360px;" />
+                <p style="padding: 0 1rem; text-align: start; margin-top: 0">
+                    Benidorm es un balneario costero en la costa este de España, parte de la famosa Costa Blanca de la región de
+                    Valencia.
+                    Fue una pequeña villa pesquera hasta la década de 1960 y actualmente es un popular destino vacacional
+                    mediterráneo famoso por su vida nocturna.
+                    Sus dos amplias playas de arena, la playa de Levante y la playa Poniente, están bordeadas de paseos costeros
+                    con palmeras, bares y filas de rascacielos.
                 </p>
             </div>
-            <div style="display: grid; grid-template-columns: 2fr 1fr;">           
-                <p style="padding: 1rem; text-align: start;">
-                    Benidorm es un balneario costero en la costa este de España, parte de la famosa Costa Blanca de la región de Valencia. 
-                    Fue una pequeña villa pesquera hasta la década de 1960 y actualmente es un popular destino vacacional mediterráneo famoso por su vida nocturna. 
-                    Sus dos amplias playas de arena, la playa de Levante y la playa Poniente, están bordeadas de paseos costeros con palmeras, bares y filas de rascacielos.
+            <div style="display: grid; grid-template-columns: 2fr 1fr; padding: 1rem;">
+                <p style="padding: 0 1rem; text-align: start; margin-top: 0">
+                    Benidorm es un balneario costero en la costa este de España, parte de la famosa Costa Blanca de la región de
+                    Valencia.
+                    Fue una pequeña villa pesquera hasta la década de 1960 y actualmente es un popular destino vacacional
+                    mediterráneo famoso por su vida nocturna.
+                    Sus dos amplias playas de arena, la playa de Levante y la playa Poniente, están bordeadas de paseos costeros
+                    con palmeras, bares y filas de rascacielos.
                 </p>
-                <img src="https://res.cloudinary.com/hello-tickets/image/upload/c_limit,f_auto,q_auto,w_1920/v1684277293/st7g4mklagcxlxwxokeu.jpg" style="width: 100%; height: 100%; object-fit: contain" />            
+                <img src="https://res.cloudinary.com/hello-tickets/image/upload/c_limit,f_auto,q_auto,w_1920/v1684277293/st7g4mklagcxlxwxokeu.jpg"
+                    style="width: 100%; height: 100%; object-fit: contain" />
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr;">
-                <img src="https://res.cloudinary.com/hello-tickets/image/upload/c_limit,f_auto,q_auto,w_768/v1677008160/post_images/Benidorm/14847369196_6e04f16fb7_k_Cropped.jpg" style="width: 100%; height: 100%; object-fit: contain" />
-                <p style="padding: 1rem; text-align: start;">
-                    Benidorm es un balneario costero en la costa este de España, parte de la famosa Costa Blanca de la región de Valencia. 
-                    Fue una pequeña villa pesquera hasta la década de 1960 y actualmente es un popular destino vacacional mediterráneo famoso por su vida nocturna. 
-                    Sus dos amplias playas de arena, la playa de Levante y la playa Poniente, están bordeadas de paseos costeros con palmeras, bares y filas de rascacielos.
+            <div style="display: grid; grid-template-columns: 1fr 1fr; padding: 1rem;">
+                <img src="https://res.cloudinary.com/hello-tickets/image/upload/c_limit,f_auto,q_auto,w_768/v1677008160/post_images/Benidorm/14847369196_6e04f16fb7_k_Cropped.jpg"
+                    style="width: 100%; height: 100%; object-fit: contain" />
+                    <p style="padding: 0 1rem; text-align: start; margin-top: 0">
+                    Benidorm es un balneario costero en la costa este de España, parte de la famosa Costa Blanca de la región de
+                    Valencia.
+                    Fue una pequeña villa pesquera hasta la década de 1960 y actualmente es un popular destino vacacional
+                    mediterráneo famoso por su vida nocturna.
+                    Sus dos amplias playas de arena, la playa de Levante y la playa Poniente, están bordeadas de paseos costeros
+                    con palmeras, bares y filas de rascacielos.
                 </p>
-            </div>
+            </div>            
         </body>
         </html>
                 `;
@@ -147,6 +174,7 @@ export default function ImagePickerPage() {
         flex: 1,                
         alignItems: 'center',
         justifyContent: 'center',
+        gap: 5
     }}>
         <Text
             style = {{
@@ -167,11 +195,12 @@ export default function ImagePickerPage() {
 
         <Image
             style = {{
-                alignSelf: 'center',
+                alignSelf: 'stretch',
                 height: 300,
                 width: 300,
                 marginTop: 5,
                 marginBottom: 15,
+                objectFit: 'contain'
             }}
             source = {{uri: image}}
         >
@@ -188,7 +217,7 @@ export default function ImagePickerPage() {
             color = 'white'
             onPress = { takePictureAsync }     
             icon = {props => 
-                <Icon name="camera" {...props} size = {30}/>
+                <Icon name="camera" {...props} size = {48}/>
             }
         />
 

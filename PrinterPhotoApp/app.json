@@ -19,12 +19,19 @@
     },
     "android": {
       "adaptiveIcon": {
+        "package": "com.mayi_cuervo.printerphotoapp",
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mayi_cuervo.PrinterPhotoApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "057af4a1-105f-4deb-8852-2462994f82e4"
+      }
     }
   }
 }
